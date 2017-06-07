@@ -1,8 +1,9 @@
-package org.mfwbook;
+package org.mfwbook.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mfwbook.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
