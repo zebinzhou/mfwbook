@@ -41,10 +41,7 @@ public class MainController {
 	    return p;
 	}
 	
-	@RequestMapping("/s")
-	public @ResponseBody List<Book> searchBook(String className) {
-        return SearchFactory.create(className).search();
-	}
+	
 //	
 //	@RequestMapping("/q3")
 //	public Person q3(String name, String address) {
