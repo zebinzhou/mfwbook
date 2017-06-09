@@ -2,6 +2,8 @@ package org.mfwbook.controller;
 
 import java.util.List;
 
+import org.apache.coyote.http11.filters.VoidInputFilter;
+import org.hibernate.sql.Delete;
 import org.mfwbook.data.BookRepository;
 import org.mfwbook.model.Book;
 import org.mfwbook.util.SearchFactory;
@@ -21,6 +23,11 @@ public class BookController {
     public @ResponseBody List<Book> searchBook(String className, String s) {
         return SearchFactory.create(bookRepository, className).search(s);
     }
+    
+//    @RequestMapping("/d")
+//    public void delete(String bookId) {
+//        bookRepository.deleteByBookId(bookId);
+//    }
 
     @RequestMapping("/book")
     public String book(Model model) {
