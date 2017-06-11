@@ -2,7 +2,7 @@ package org.mfwbook.controller;
 
 import java.util.List;
 
-import org.mfwbook.data.BookRepository;
+import org.mfwbook.dao.BookRepository;
 import org.mfwbook.model.Book;
 import org.mfwbook.util.SearchFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,10 @@ public class BookController {
     private BookRepository bookRepository;
     
     @RequestMapping("/s")
-    public @ResponseBody List<Book> searchBook(String className, String s) {
-        return SearchFactory.create(bookRepository, className).search(s);
+    public @ResponseBody String searchBook(String className, String s,Model model) {
+    	List<Book> books = SearchFactory.create(bookRepository, className).search(s);
+    	model.addAllAttributes(books);
+        return "book";
     }
 
     @RequestMapping("/book")

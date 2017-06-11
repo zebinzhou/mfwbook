@@ -1,9 +1,11 @@
 package org.mfwbook.util;
 
+
 import java.util.List;
 
-import org.mfwbook.data.BookRepository;
+import org.mfwbook.dao.BookRepository;
 import org.mfwbook.model.Book;
+
 
 public class SearchByBookId extends SearchStrategy {
     
@@ -13,8 +15,7 @@ public class SearchByBookId extends SearchStrategy {
     
     @Override
     public List<Book> search(String bookId) {
-        List<Book> b = bookRepository.findByBookId(bookId);
-        return b;
+        return bookRepository.findByBookId(bookId);
     }
 
 }
