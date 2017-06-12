@@ -1,8 +1,11 @@
 package org.mfwbook.util;
 
-import org.mfwbook.data.BookRepository;
+
+import org.mfwbook.dao.BookRepository;
 
 public class SearchFactory {
+	
+	
     public static SearchStrategy create(BookRepository bookRepository, String className) {
         if (className.equals("书号搜索")) {
             return new SearchByBookId(bookRepository);

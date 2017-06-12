@@ -4,10 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQuery(name="NPerson.withNameAndAddressNamedQuery", 
 query="select p from NPerson p where p.name=?1 and address=?2")
+@Table(name="nperson")
 public class NPerson {
     @Id
     @GeneratedValue

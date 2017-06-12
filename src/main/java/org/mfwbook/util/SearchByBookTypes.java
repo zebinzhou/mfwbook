@@ -2,7 +2,7 @@ package org.mfwbook.util;
 
 import java.util.List;
 
-import org.mfwbook.data.BookRepository;
+import org.mfwbook.dao.BookRepository;
 import org.mfwbook.model.Book;
 
 public class SearchByBookTypes extends SearchStrategy {
