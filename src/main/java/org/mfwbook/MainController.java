@@ -32,6 +32,11 @@ public class MainController {
 //	    return people;
 //	}
 //	
+	@RequestMapping("/q1")
+	public @ResponseBody Person q1(String name) {
+	    Person p = personRepository.findByName(name);
+	    return p;
+	}
 	@RequestMapping("/q2")
 	public @ResponseBody Person q2(String name, String address) {
 	//public @ResponseBody Person q2() {
@@ -67,7 +72,7 @@ public class MainController {
 //	    return pagePeople;
 //	}
 
-	 @RequestMapping("/")
+	 @RequestMapping("/person")
 	    public String person(Model model) {
 //	        Person p = q3();
 //	        List<User> list = new ArrayList<>();
@@ -77,4 +82,16 @@ public class MainController {
 //	        model.addAttribute(p);
 	        return "person";
 	    }
+	 @RequestMapping("/home")
+	 public String home(Model model) {
+		 return "home";
+	 }
+	 @RequestMapping("/")
+	 public String login(Model model) {
+		 return "login";
+	 }
+	 @RequestMapping("/register")
+	 public String register(Model model) {
+		 return "register";
+	 }
 }

@@ -11,7 +11,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findByAddress(String name);
     
     Person findByNameAndAddress(String name, String address);
-    
+    Person findByName(String name);
     @Query("select p from Person p where p.name= :name and p.address= :address")
     Person withNameAndAddressQuery(@Param("name")String name, @Param("address")String address);
     
