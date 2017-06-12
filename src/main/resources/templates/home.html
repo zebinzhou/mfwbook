@@ -4,13 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>以书会友</title>
 	<link rel="stylesheet" 
-	th:href="@{/bootstrap-3.3.7-dist/css/bootstrap.min.css}" />
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 <div style="margin:0 auto;background-color:#666666;height:100px;">
 	<div style="margin:auto;">
 		<a id="llogo" href="/index.php/site/main">
-			<img style="margin:25px 128px ;" th:src="@{/photo/logo1.png}" />
+			<img style="margin:25px 128px ;" th:src="@{images/logo1.png}" />
 		</a>
 	</div><!-- header -->
 </div>
@@ -53,7 +53,7 @@
 	</ul>
 	</div>
 	<div style="float:left; width:800px;">
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover" id="bookList">
 		<thead class="">
 			<tr class="">
 				<th class="text-center">书名</th>
@@ -62,10 +62,10 @@
 			</tr>
 		</thead>
 		<tbody class="">
-			<tr class="">
-				<td class="text-center">死神</td>
-				<td class="text-center">悬疑</td>
-				<td class="text-center">来了</td>
+			<tr class="" th:each="book:${books}">
+				<td th:text="${book.bookName}"></td>
+				<td th:text="${book.bookTypes}"></td>
+				<td th:text="${book.author}"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -78,23 +78,10 @@
 	</div>
 </form>
 <div id="showBook"></div>
-	<script th:src="@{/jquery.js}"></script>
-	<script th:src="@{/bootstrap-3.3.7-dist/js/bootstrap.min.js}"></script>
-	<script>
-	$('#add').bind('click', function() {
-		var nameVal = $('#add-input').val();
-		$.post("/q1", {name:nameVal}, function(data){
-	       $('tbody').append('<tr><td class="text-center">'+ data.name + '</td><td class="text-center">'+ data.age +'</td><td class="text-center">'+ data.address + '</td></tr>');
-	    });
-	  });
-	$('#search').on('click', function() {
-	      var input = $('#search-input').val();
-	      var options = $('#sel option:selected').val();
-	    	  $.post("/s", {className:"书名搜索",s:input}, function(data) {
-		          $('#showBook').html(data[0].bookName);
-		      });
-	      return true;
-	  });
-	</script>
+	<script th:src="@{js/jquery.js}"></script>
+	<script th:src="@{js/bootstrap.min.js}"></script>
+	<script th:src="@{js/addbook.js}"></script>
+	<script th:src="@{js/searchbook.js}"></script>
+	<script th:src="@{js/showbook.js}"></script>
 </body>
 </html>

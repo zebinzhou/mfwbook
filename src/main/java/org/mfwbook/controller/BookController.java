@@ -1,9 +1,15 @@
 package org.mfwbook.controller;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.mfwbook.dao.BookRepository;
+import org.mfwbook.dao.UserRepository;
 import org.mfwbook.model.Book;
+import org.mfwbook.model.User;
 import org.mfwbook.util.SearchFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +23,30 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
     
-    @RequestMapping("/s")
-    public @ResponseBody String searchBook(String className, String s,Model model) {
-    	List<Book> books = SearchFactory.create(bookRepository, className).search(s);
-    	model.addAllAttributes(books);
-        return "book";
+    @Autowired
+    private UserRepository userRepository;
+    
+	@Autowired
+	HttpServletRequest httpServletRequest;
+    
+	@RequestMapping("/s")
+	public @ResponseBody List<Book> searchBook(String className, String key) {
+        return SearchFactory.create(bookRepository, className).search(key);
+	}
+	
+    @RequestMapping("/addbook")
+    public @ResponseBody Book addBook(String bookName,Model model) {
+    	Book book = bookRepository.findByBookNameLike(bookName).get(0);
+    	model.addAttribute(book);
+    	String username = httpServletRequest.getRemoteUser();
+        User user = userRepository.findByName(username);
+        Set<Book> userbooks = user.getBooks();
+        userbooks.add(book);
+        userRepository.save(Arrays.asList(user));
+        return book;
     }
+    
+    
     
 //    @RequestMapping("/d")
 //    public void delete(String bookId) {

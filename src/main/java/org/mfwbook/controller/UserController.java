@@ -12,7 +12,9 @@ import org.mfwbook.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -33,8 +35,9 @@ public class UserController {
 		return "login";
 	}
 	
+	
 //	@ResponseBody
-    @RequestMapping("/home")
+    @RequestMapping("/home1")
     public String user(Model model) {
 		String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
@@ -45,6 +48,6 @@ public class UserController {
         if(user!=null)
         
         return "user";
-        return "home";
+        return "home1";
     }
 }

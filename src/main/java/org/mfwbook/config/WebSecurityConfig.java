@@ -7,32 +7,33 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+//@Configuration
+public class WebSecurityConfig {
+//extends WebSecurityConfigurerAdapter{
 	
-	@Autowired
-	SecurityService securityService;
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(securityService);
-	}
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-        .authorizeRequests()
-//            .antMatchers("/", "/home").permitAll()
-            .anyRequest().authenticated()
-        .and()
-        .formLogin()
-            .loginPage("/login")
-            .failureUrl("/login?errror")
-            .permitAll()
-        .and()
-        .logout()
-            .permitAll();
-	}
+//	@Autowired
+//	SecurityService securityService;
+//
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(securityService);
+//	}
+//
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http
+//        .authorizeRequests()
+////            .antMatchers("/", "/home").permitAll()
+//            .anyRequest().authenticated()
+//        .and()
+//        .formLogin()
+//            .loginPage("/login")
+//            .failureUrl("/login?errror")
+//            .permitAll()
+//        .and()
+//        .logout()
+//            .permitAll();
+//	}
 	
 	
 
