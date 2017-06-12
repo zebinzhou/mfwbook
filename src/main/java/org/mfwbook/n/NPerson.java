@@ -1,14 +1,16 @@
-package org.mfwbook;
+package org.mfwbook.n;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name="Person.withNameAndAddressNamedQuery", 
-query="select p from Person p where p.name=?1 and address=?2")
-public class Person {
+@NamedQuery(name="NPerson.withNameAndAddressNamedQuery", 
+query="select p from NPerson p where p.name=?1 and address=?2")
+@Table(name="nperson")
+public class NPerson {
     @Id
     @GeneratedValue
     private Long id;
@@ -16,11 +18,11 @@ public class Person {
     private Integer age;
     private String address;
     
-    public Person() {
+    public NPerson() {
         super();
     }
 
-    public Person(Long id, String name, Integer age, String address) {
+    public NPerson(Long id, String name, Integer age, String address) {
         super();
         this.id = id;
         this.name = name;
