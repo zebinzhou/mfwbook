@@ -24,21 +24,24 @@
         <h1 class="welcome">Welcome </h1>
         <br />
         <h3>Test</h3>
+<<<<<<< HEAD:src/main/resources/templates/nperson.html
         <form th:action="@{/nq2}" method="get">
+=======
+>>>>>>> b9fefae9e5a405bfe4ac173caad9b5111b178cd2:src/main/resources/templates/person.html
           <input type="text" id="name" name="name" />
           <input type="text" id="address" name="address" />
           <!-- /*button type="submit" id="submit">Click</button*/ -->
-          <input type="submit" value="Click" />
-        </form>
+          <input type="submit" value="Click" class="submit"/>
         <div id="showPerson"></div>
       </div>
-
+      <input type="button" id="submit" />
     </div>
   </div>
   <script type="text/javascript">
-  $('#submit').bind('click', function() {
+  $('.submit').on('click', function() {
 	  var nameVal = $('#name').val();
 	  var addressVal = $('#address').val();
+<<<<<<< HEAD:src/main/resources/templates/nperson.html
 	  $.post("/nq2", {name:nameVal, address:addressVal});
 	  return false;
   });
@@ -52,6 +55,27 @@
 	       $('#showPerson').append(data.age);
 	    });
 	});
+=======
+	  $.post("/q2", {name:nameVal, address:addressVal}, function(data) {
+		  $('.welcome').append(data.name);
+          $('#showPerson').append(data.age);
+	  });
+      //location.reload();
+
+	  return false;
+  });
+  
+//   $(document).ready(function() {
+// 	    $.ajax({
+// 	        url: "/q2",
+// 	        data: {name:"小刚", address:"暨南大学"}
+// 	    }).then(function(data) {
+// 	       $('.welcome').append(data.name);
+// 	       $('#showPerson').append(data.age);
+	        
+// 	    });
+// 	});
+>>>>>>> b9fefae9e5a405bfe4ac173caad9b5111b178cd2:src/main/resources/templates/person.html
   </script>
   <footer class="container-fluid text-center">
     <p>Footer Text</p>
