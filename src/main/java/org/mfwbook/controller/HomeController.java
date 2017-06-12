@@ -1,5 +1,10 @@
 package org.mfwbook.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +31,8 @@ public class HomeController {
     public String home(Model model) {
     	String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
-        Set<Book> userbooks = user.getBooks();
-        model.addAllAttributes(userbooks);
+        Set<Book> books = user.getBooks();
+        model.addAttribute("books", books);
         return "home";
     }
 	
