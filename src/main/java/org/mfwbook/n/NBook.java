@@ -1,6 +1,9 @@
-package org.mfwbook;
+package org.mfwbook.n;
 
-public class Book {
+import javax.persistence.Table;
+
+@Table(name="nbook")
+public class NBook {
     String author;
     String bookId;
     String bookName;

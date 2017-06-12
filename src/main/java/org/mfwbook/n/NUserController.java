@@ -1,4 +1,4 @@
-package org.mfwbook;
+package org.mfwbook.n;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class UserController {
-    @RequestMapping("/u")
+public class NUserController {
+    @RequestMapping("/nu")
     public String user(Model model) {
-        User user = new User("test", "testingnum");
-        List<User> list = new ArrayList<>();
-        list.add(user);
+        NUser nUser = new NUser("test", "testingnum");
+        List<NUser> list = new ArrayList<>();
+        list.add(nUser);
         model.addAllAttributes(list);
         
-        return "user";
+        return "nuser";
     }
 }

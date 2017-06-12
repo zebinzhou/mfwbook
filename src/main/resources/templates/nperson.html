@@ -24,7 +24,7 @@
         <h1 class="welcome">Welcome </h1>
         <br />
         <h3>Test</h3>
-        <form th:action="@{/q2}" method="get">
+        <form th:action="@{/nq2}" method="get">
           <input type="text" id="name" name="name" />
           <input type="text" id="address" name="address" />
           <!-- /*button type="submit" id="submit">Click</button*/ -->
@@ -39,13 +39,13 @@
   $('#submit').bind('click', function() {
 	  var nameVal = $('#name').val();
 	  var addressVal = $('#address').val();
-	  $.post("/q2", {name:nameVal, address:addressVal});
+	  $.post("/nq2", {name:nameVal, address:addressVal});
 	  return false;
   });
   
   $(document).ready(function() {
 	    $.ajax({
-	        url: "/q2",
+	        url: "/nq2",
 	        data: {name:"王云飞", address:"合肥"}
 	    }).then(function(data) {
 	       $('.welcome').append(data.name);
