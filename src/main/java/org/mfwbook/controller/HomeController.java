@@ -27,11 +27,11 @@ public class HomeController {
     	String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
         Set<Book> userbooks = user.getBooks();
-        model.addAllAttributes(userbooks);
+        model.addAttribute("user", user);
         return "home";
     }
 	
-	 @RequestMapping("/")
+	 @RequestMapping("/login")
 	 public String login(Model model) {
 		 return "login";
 	 }
