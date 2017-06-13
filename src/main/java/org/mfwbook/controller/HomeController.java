@@ -26,15 +26,15 @@ public class HomeController {
     public String home(Model model) {
     	String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
-        Set<Book> userbooks = user.getBooks();
+        Set<Book> userbooks = user.getPrefer_books();
         model.addAllAttributes(userbooks);
         return "home";
     }
 	
-	 @RequestMapping("/")
+	/* @RequestMapping("/")
 	 public String login(Model model) {
 		 return "login";
-	 }
+	 }*/
 	 @RequestMapping("/register")
 	 public String register(Model model) {
 		 return "register";

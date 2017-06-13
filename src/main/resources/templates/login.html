@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>以书会友-用户登录</title>
-	<link rel="stylesheet" 
-	th:href="@{css/bootstrap.min.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>以书会友-用户登录</title>
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<div style="margin:0 auto;background-color:#666666;height:100px;">
-	<div style="margin:auto;">
-		<a id="llogo" href="">
-			<img style="margin:25px 128px ;" th:src="@{images/logo1.png}" />
-		</a>
-	</div><!-- header -->
-</div>
-<form class="form-horizontal" role="form">
-	<div class="form-group">
-		<label for="inputEmail" class="col-sm-2 control-label">用户名</label>
-		<input type="email" class="form-control" id="inputEmail" placeholder="请输入您的用户名" style="width:200px"/>	
+	<div style="margin: 0 auto; background-color: #666666; height: 100px;">
+		<div style="margin: auto;">
+			<a id="llogo" href=""> <img style="margin: 25px 128px;"
+				th:src="@{images/logo1.png}" />
+			</a>
+		</div>
+		<!-- header -->
 	</div>
-	<div class="form-group">
-		<label for="inputPassword" class="col-sm-2 control-label">密码</label>
-		<input type="password" class="form-control" id="inputPassword" placeholder="请输入您的用户密码" style="width:200px"/>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-success">登录</button>	
-			<button class="btn btn-link">忘记密码?</button>
+
+	<div class="container">
+		<div class="starter-template">
+			<p th:if="${param.logout}" class="bg-warning">已成功注销</p>
+			<p th:if="${param.error}" class="bg-danger">有错误，请重试</p>
+
+			<h2>使用账号密码登录</h2>
+			<form class="form-horizontal" role="form" th:action="@{/login}" action="/login" method="POST">
+				<div class="form-group">
+					<label for="username" class="col-sm-2 control-label">用户名</label> <input
+						type="text" class="form-control" name="username" value=""
+						placeholder="请输入您的用户名" style="width: 200px" />
+				</div>
+				<div class="form-group">
+					<label for="inputPassword" class="col-sm-2 control-label">密码</label>
+					<input type="password" class="form-control" name="password"
+						placeholder="请输入您的用户密码" style="width: 200px" />
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button th:href="@{/home}" type="submit" class="btn btn-success" id="login" value="Login">登录</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button class="btn-info">还未注册账号?点此注册</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button class="btn-info" th:href="@{/register}">还未注册账号?点此注册</button>
-		</div>
-	</div>
-</form>
 	<script th:src="@{js/jquery.js}"></script>
 	<script th:src="@{js/bootstrap.min.js}"></script>
 </body>

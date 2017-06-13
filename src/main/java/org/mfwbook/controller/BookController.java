@@ -1,6 +1,5 @@
 package org.mfwbook.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -40,9 +39,10 @@ public class BookController {
     	model.addAttribute(book);
     	String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
-        Set<Book> userbooks = user.getBooks();
+        Set<Book> userbooks = user.getPrefer_books();
         userbooks.add(book);
-        userRepository.save(Arrays.asList(user));
+//        userRepository.save(Arrays.asList(user));
+        userRepository.save(user);
         return book;
     }
     
