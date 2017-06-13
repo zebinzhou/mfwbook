@@ -52,7 +52,7 @@
  		<li><a href="##">读过的书</a></li>
 	</ul>
 	</div>
-	<div style="float:left; width:800px;">
+	<div style="float:left; width:800px;" class="bookList">
 	<table class="table table-bordered table-hover" id="bookList">
 		<thead class="">
 			<tr class="">
@@ -63,20 +63,58 @@
 		</thead>
 		<tbody class="">
 			<tr class="" th:each="book: ${books}">
-				<td th:text="${book.bookName}">keyima</td>
-				<td th:text="${book.bookTypes}">what</td>
-				<td th:text="${book.author}">nice</td>
+				<td th:text="${book.bookName}"></td>
+				<td th:text="${book.bookTypes}"></td>
+				<td th:text="${book.author}"></td>
 			</tr>
 		</tbody>
 	</table>
 	</div>
+  <div style="float:left; width:800px;" class="bookList">
+    <table class="table table-bordered table-hover">
+        <thead class="">
+            <tr class="">
+                <th class="text-center">书名</th>
+                <th class="text-center">类型</th>
+                <th class="text-center">作者</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr class="" th:each="book: ${books}">
+                <td th:text="${book.bookName}"></td>
+                <td th:text="${book.bookTypes}"></td>
+                <td th:text="${book.author}"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div style="float:left; width:800px;" class="bookList">
+    <table class="table table-bordered table-hover">
+        <thead class="">
+            <tr class="">
+                <th class="text-center">书名</th>
+                <th class="text-center">类型</th>
+                <th class="text-center">作者</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr class="" th:each="book: ${books}">
+                <td th:text="${book.bookName}"></td>
+                <td th:text="${book.bookTypes}"></td>
+                <td th:text="${book.author}"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
 </div>
+<div>
 <form class="form-horizontal" role="form">
 	<div class="form-group">
 		<input id="add-input" type="email" class="form-control" placeholder="请输入书名" style="width:150px"/>
 		<button class="btn btn-btn-primary btn-success btn-block" type="button" id="add" style="width:150px">添加书籍</button>	
 	</div>
 </form>
+</div>
 <div id="showBook"></div>
 	<script th:src="@{js/jquery.js}"></script>
 	<script th:src="@{js/bootstrap.min.js}"></script>

@@ -1,104 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-
-<link th:href="@{bootstrap-3.3.7-dist/css/bootstrap.min.css}"
-  rel="stylesheet" />
-<link th:href="@{bootstrap-3.3.7-dist/css/bootstrap-theme.min.css}"
-  rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>以书会友</title>
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
+  <div style="margin: 0 auto; background-color: #666666; height: 100px;">
+    <div style="margin: auto;">
+      <a id="llogo" href="/index.php/site/main"> <img
+        style="margin: 25px 128px;" th:src="@{images/logo1.png}" />
+      </a>
+    </div>
+    <!-- header -->
+  </div>
 
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-3 sidenav">
-				<p>
-					<a href="#">Link</a>
-				</p>
-				<p>
-					<a href="#">Link</a>
-				</p>
-				<p>
-					<a href="#">Link</a>
-				</p>
-			</div>
-			<div class="col-sm-9 text-left">
-				<h1 class="result">Result:</h1>
-				<br />
-				<h3>Test</h3>
-				<!-- /*<form th:action="@{/s}" method="get">
-					按书号搜索: <input type="text" id="bookId" name="s" /> <input
-						class="search" type="submit" name="className" value="书号搜索" />
-				</form>
-				<br />
-				<form th:action="@{/s}" method="get">
-					按书名搜索: <input type="text" id="bookName" name="s" /> <input
-						class="search" type="submit" name="className" value="书名搜索" />
-				</form>
-				<br />
-				<form th:action="@{/s}" method="get">
-					按作者搜索: <input type="text" id="author" name="s" /> <input
-						class="search" type="submit" name="className" value="作者搜索" />
-				</form> */ -->
-                    按书号搜索: <input type="text" id="bookId" name="s" />
-                    <input class="search" type="submit" name="className" value="书号搜索" />
-                <br />
-                    按书名搜索: <input type="text" id="bookName" name="s" /> 
-                    <input class="search" type="submit" name="className" value="书名搜索" />
-                <br />
-                    按作者搜索: <input type="text" id="author" name="s" /> 
-                    <input class="search" type="submit" name="className" value="作者搜索" />
-				<div id="showBook"></div>
-			</div>
 
-		</div>
-	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	
-	<script type="text/javascript">
-  $('.search').on('click', function() {
-      var input = $(this).val();
-      var para;
-      if (input == '书号搜索') {
-    	  para = $('#bookId').val();
-      } else if (input == '书名搜索') {
-    	  para = $('#bookName').val();
-      } else if (input == '作者搜索') {
-    	  para = $('#author').val();
-      } else {}
-      $.post("/s", {className: input, s: para}, function(data) {
-    	  $('.result').html(data[0].bookName);
-          $('#showBook').html(data[0].bookId);
-      })
+    <p><img th:src="@{images/${book.id}.png}" /></p>
+    <p>书名：<span th:text="${book.name}"></span></p>
+    <p>作者：<span th:text="${book.author}"></span></p>
+    <p>出版社：<span th:text="${book.publisher}"></span></p>
+    <div class="bookComments" th:each="bookcomment: ${books.comments}">
+        <p><span th:text="${bookcomment.userName}"></span></p>
+        <p><span th:text="${bookcomment.releaseDate}"></span></p>
+        <p><span th:text="${bookcomment.comment}</p>
+        <p><span th:text="${bookcomment.upvoke}"></span>
+    </div>
+    <div id="appendComment"></div>
+    <div>
+        <textarea></textarea>
+        <button type="submit" id="comment">发表评论</button>
+    </div>
 
-      return true;
-  });
-  
-//   $('.search').click(function(e) {
-// 	  $.ajax({
-		   
-// 		  url: "/s",
-// 		  data: { className: e.input, s: e.para},
-// 		  success: function(data) {
-// 		      $('.result').append(data.bookName);
-// 			  $('#showPerson').append(data.bookId);
-// 		  }
-//       }
-//  })
-//   $('.search').click() {
-//       $.ajax({
-//            url: "/s",
-//            data: { className: input, s: para}
-//       }).then(function(data) {
-//            $('.result').append(data.bookName);
-//            $('#showPerson').append(data.bookId);
-//       })    
-//   });
-  </script>
-	<footer class="container-fluid text-center">
-		<p>Footer Text</p>
-	</footer>
+  <div id="showBook"></div>
+  <script th:src="@{js/jquery.js}"></script>
+  <script th:src="@{js/bootstrap.min.js}"></script>
+  <script th:src="@{js/addbook.js}"></script>
+  <script th:src="@{js/searchbook.js}"></script>
+  <script th:src="@{js/showbook.js}"></script>
+  <script th:src="@{js/showtabs.js}"></script>
 </body>
 </html>
