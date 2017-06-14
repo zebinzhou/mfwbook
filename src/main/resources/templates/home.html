@@ -50,7 +50,6 @@
       <li><a href="##"><span class="glyphicon glyphicon-signal"></span>排行榜</a></li>
       <li><a href="##"><span class="glyphicon glyphicon-user"
           th:text="${user.name}"></span></a></li>
-      <li><a href="##">书籍淘金</a></li>
       <li>
         <form class="navbar-form navbar-left" th:action="@{/logout}"
           method="post">
@@ -60,23 +59,19 @@
           </button>
         </form>
       </li>
-      <li class="dropdown"><a href="##" data-toggle="dropdown"
-        class="dropdown-toggle"><span
-          class="glyphicon glyphicon-user">用户</span></a>
-        <ul class="dropdown-menu">
-          <li><form th:action="@{/logout}" method="post">
-              <input type="submit" value="注销" />
-            </form></li>
-        </ul></li>
+      
     </ul>
 
   </div>
   <div style="width: 900px">
     <div style="float: left; width: 100px;">
       <ul class="book-state nav nav-pills nav-stacked">
-        <li class="active"><a href="##">在读的书</a></li>
+              <li class="active"><a href="##">在读的书</a></li>
         <li><a href="##">想读的书</a></li>
         <li><a href="##">读过的书</a></li>
+        <!-- /*li><p th:text="${user.name}"></p></li>
+        <li class="disabled"><a class="text-center" href="##" style="background-color:#f55f10;">关注</a></li> */-->
+        
       </ul>
     </div>
 
@@ -149,6 +144,5 @@
     </form>
   </div>
   <div id="showBook"></div>
-
 </body>
 </html>

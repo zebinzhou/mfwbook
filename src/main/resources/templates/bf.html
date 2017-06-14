@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>以书会友</title>
+	<link rel="stylesheet" 
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div style="margin:0 auto;background-color:#666666;height:100px;">
+	<div style="margin:auto;">
+		<a id="llogo" href="/index.php/site/main">
+			<img style="margin:25px 128px ;" th:src="@{images/logo1.png}" />
+		</a>
+	</div><!-- header -->
+</div>
+<div class="navbar navbar-default" role="navigation">
+		<form class="navbar-form navbar-left" role="form">
+			<div class="form-group">
+				<select id="sel" class="form-control">
+					<option value="1">书名</option>
+					<option value="2">作者</option>
+					<option value="3">书号</option>
+				</select>
+			</div>
+		</form>
+		<form action="##" class="navbar-form navbar-left" role="search">
+			<div class="form-group">
+				<input id="search-input" type="text" class="form-control"
+					placeholder="请输入关键词" />
+				<button id="search"
+					class="btn btn-default glyphicon glyphicon-search"></button>
+			</div>
+		</form>
+		<ul class="nav navbar-nav ">
+			<li><a th:href="@{/home}"><span
+					class="glyphicon glyphicon-home"></span>书房首页</a></li>
+			<li class="active dropdown"><a href="##" data-toggle="dropdown"
+				class="dropdown-toggle">书友动态<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="##">读书笔记</a></li>
+					<li><a href="##">书评</a></li>
+				</ul></li>
+			<li><a href="##"><span class="glyphicon glyphicon-signal"></span>排行榜</a></li>
+			<li><a href="##"><span class="glyphicon glyphicon-user"></span></a></li>
+		</ul>
+		<form class="navbar-form navbar-left" th:action="@{/logout}" method="post">
+			
+			<button type="submit" class="btn btn-danger">
+			<span class="glyphicon glyphicon-off">注销</span></button>
+			</form>
+	</div>
+	<div style="width: 900px">
+		<div style="float: left; width: 100px;">
+			<ul class="nav nav-pills nav-stacked">
+				<li><a>guo</a></li>
+				<li class=""><a class="text-center" href="##" style="background-color:#f55f10;">关注</a></li>
+				<li class="active"><a href="##">在读的书</a></li>
+				<li><a href="##">想读的书</a></li>
+				<li><a href="##">读过的书</a></li>
+			</ul>
+		</div>
+		<div style="float: left; width: 800px;">
+			<table class="table table-bordered table-hover" id="bookList">
+				<thead class="">
+					<tr class="">
+						<th class="text-center">书名</th>
+						<th class="text-center">类型</th>
+						<th class="text-center">作者</th>
+						<th class="text-center">操作</th>
+					</tr>
+				</thead>
+				<tbody class="">
+					<tr class="" th:each="book:${books}">
+						<td th:text="${book.bookName}"></td>
+						<td th:text="${book.bookTypes}"></td>
+						<td th:text="${book.author}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script th:src="@{js/jquery.js}"></script>
+	<script th:src="@{js/bootstrap.min.js}"></script>
+	<script th:src="@{js/addbook.js}"></script>
+	<script th:src="@{js/searchbook.js}"></script>
+	<script th:src="@{js/showbook.js}"></script>
+</body>
+</html>

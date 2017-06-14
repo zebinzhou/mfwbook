@@ -31,16 +31,20 @@ public class HomeController {
         model.addAttribute("readingBooks", userReadingBooks);
         model.addAttribute("preferBooks", userPreferBooks);
         model.addAttribute("haveReadBooks", userHaveReadBooks);
+        model.addAttribute("user", user);
         return "home";
     }
-
-    /*
-     * @RequestMapping("/")
-     * 
-     * public String login(Model model) { return "login"; }
-     */
-    @RequestMapping("/register")
-    public String register(Model model) {
-        return "register";
-    }
+	
+	 @RequestMapping("/login")
+	 public String login(Model model) {
+		 return "login";
+	 }
+	 @RequestMapping("/register")
+	 public String register(Model model) {
+		 return "register";
+	 }
+	 @RequestMapping("/bf")
+	 public String bf(Model model) {
+		 return "bf";
+	 }
 }
