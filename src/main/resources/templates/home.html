@@ -53,7 +53,6 @@
       <li>
         <form class="navbar-form navbar-left" th:action="@{/logout}"
           method="post">
-
           <button type="submit" class="btn btn-danger">
             <span class="glyphicon glyphicon-off">注销</span>
           </button>
@@ -83,6 +82,7 @@
             <th class="text-center">书名</th>
             <th class="text-center">类型</th>
             <th class="text-center">作者</th>
+            <th class="text-center">操作</th>
           </tr>
         </thead>
         <tbody class="">
@@ -90,6 +90,9 @@
             <td th:class="text-center" th:text="${book.bookName}"></td>
             <td th:class="text-center" th:text="${book.bookTypes}"></td>
             <td th:class="text-center" th:text="${book.author}"></td>
+            <td th:class="text-center">
+            	<button class="btn btn-danger btn-sm">删除</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -102,6 +105,7 @@
             <th class="text-center">书名</th>
             <th class="text-center">类型</th>
             <th class="text-center">作者</th>
+            <th class="text-center">操作</th>
           </tr>
         </thead>
         <tbody class="">
@@ -109,6 +113,9 @@
             <td th:class="text-center" th:text="${book.bookName}"></td>
             <td th:class="text-center" th:text="${book.bookTypes}"></td>
             <td th:class="text-center" th:text="${book.author}"></td>
+            <td th:class="text-center">
+            	<button class="btn btn-danger btn-sm">删除</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -121,6 +128,7 @@
             <th class="text-center">书名</th>
             <th class="text-center">类型</th>
             <th class="text-center">作者</th>
+            <th class="text-center">操作</th>
           </tr>
         </thead>
         <tbody class="">
@@ -128,6 +136,9 @@
             <td th:class="text-center" th:text="${book.bookName}"></td>
             <td th:class="text-center" th:text="${book.bookTypes}"></td>
             <td th:class="text-center" th:text="${book.author}"></td>
+			<td th:class="text-center">
+            	<button class="btn btn-danger btn-sm">删除</button>
+            </td>
           </tr>
         </tbody>
       </table>
