@@ -39,4 +39,8 @@ public class HomeController {
 	 public String register(Model model) {
 		 return "register";
 	 }
+	 @RequestMapping("/bf")
+	 public String bf(Model model) {
+		 return "bf";
+	 }
 }
