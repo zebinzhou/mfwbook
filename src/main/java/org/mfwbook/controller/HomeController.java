@@ -47,4 +47,8 @@ public class HomeController {
 	 public String bf(Model model) {
 		 return "bf";
 	 }
+	 @RequestMapping("/search")
+	 public String search(Model model) {
+		 return "search";
+	 }
 }
