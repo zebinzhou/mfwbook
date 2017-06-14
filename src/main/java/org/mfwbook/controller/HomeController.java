@@ -1,10 +1,5 @@
 package org.mfwbook.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
@@ -31,15 +25,19 @@ public class HomeController {
     public String home(Model model) {
     	String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
-        Set<Book> books = user.getBooks();
-        model.addAttribute("books", books);
+        Set<Book> userReadingBooks = user.getReading_books();
+        Set<Book> userPreferBooks = user.getPrefer_books();
+        Set<Book> userHaveReadBooks = user.getHave_read_books();
+        model.addAttribute("readingBooks", userReadingBooks);
+        model.addAttribute("preferBooks", userPreferBooks);
+        model.addAttribute("haveReadBooks", userHaveReadBooks);
         return "home";
     }
 	
-	 @RequestMapping("/")
+	/* @RequestMapping("/")
 	 public String login(Model model) {
 		 return "login";
-	 }
+	 }*/
 	 @RequestMapping("/register")
 	 public String register(Model model) {
 		 return "register";

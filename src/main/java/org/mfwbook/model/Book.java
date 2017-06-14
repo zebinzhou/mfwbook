@@ -25,17 +25,36 @@ public class Book {
 	private String author;
 	private String publisher;
 	private String bookTypes;
-	private int readTimes;
-	private int searchTimes;
+	private Integer readTimes;
+	private Integer searchTimes;
 
 	@JsonIgnore 
-	@ManyToMany(cascade = CascadeType.PERSIST,
+	@ManyToMany(mappedBy="prefer_books",cascade = CascadeType.PERSIST,
 			fetch=FetchType.EAGER)
-	@JoinTable(name = "user_books", 
+/*	@JoinTable(name = "user_books", 
 			joinColumns = {@JoinColumn(name = "BOOK_ID", referencedColumnName = "BOOKID") },
-			inverseJoinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID") })
-	private Set<User> users;
+			inverseJoinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID") })*/
+	private Set<User> prefer_users;
+	
+	
+	@JsonIgnore 
+	@ManyToMany(mappedBy="reading_books",cascade = CascadeType.PERSIST,
+			fetch=FetchType.EAGER)
+/*	@JoinTable(name = "user_books", 
+			joinColumns = {@JoinColumn(name = "BOOK_ID", referencedColumnName = "BOOKID") },
+			inverseJoinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID") })*/
+	private Set<User> reading_users;
+	
+	@JsonIgnore 
+	@ManyToMany(mappedBy="have_read_books",cascade = CascadeType.PERSIST,
+			fetch=FetchType.EAGER)
+/*	@JoinTable(name = "user_books", 
+			joinColumns = {@JoinColumn(name = "BOOK_ID", referencedColumnName = "BOOKID") },
+			inverseJoinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID") })*/
+	private Set<User> have_read_users;
 
+	public Book() {}
+	
 	public String getBookId() {
 		return bookId;
 	}
@@ -76,28 +95,48 @@ public class Book {
 		this.bookTypes = bookTypes;
 	}
 
-	public int getReadTimes() {
+	
+
+	public Integer getReadTimes() {
 		return readTimes;
 	}
 
-	public void setReadTimes(int readTimes) {
+	public void setReadTimes(Integer readTimes) {
 		this.readTimes = readTimes;
 	}
 
-	public int getSearchTimes() {
+	public Integer getSearchTimes() {
 		return searchTimes;
 	}
 
-	public void setSearchTimes(int searchTimes) {
+	public void setSearchTimes(Integer searchTimes) {
 		this.searchTimes = searchTimes;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<User> getPrefer_users() {
+		return prefer_users;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setPrefer_users(Set<User> prefer_users) {
+		this.prefer_users = prefer_users;
 	}
+
+	public Set<User> getReading_users() {
+		return reading_users;
+	}
+
+	public void setReading_users(Set<User> reading_users) {
+		this.reading_users = reading_users;
+	}
+
+	public Set<User> getHave_read_users() {
+		return have_read_users;
+	}
+
+	public void setHave_read_users(Set<User> have_read_users) {
+		this.have_read_users = have_read_users;
+	}
+
+
 
 }

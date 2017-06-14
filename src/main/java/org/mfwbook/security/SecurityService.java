@@ -1,4 +1,4 @@
-package org.mfwbook.service;
+package org.mfwbook.security;
 
 import org.mfwbook.dao.UserRepository;
 import org.mfwbook.model.User;

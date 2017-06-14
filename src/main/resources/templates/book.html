@@ -3,41 +3,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>以书会友</title>
-<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+  <script th:src="@{/js/jquery.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>  
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <script th:src="@{/js/comment.js}"></script>
 </head>
 <body>
   <div style="margin: 0 auto; background-color: #666666; height: 100px;">
     <div style="margin: auto;">
       <a id="llogo" href="/index.php/site/main"> <img
-        style="margin: 25px 128px;" th:src="@{images/logo1.png}" />
+        style="margin: 25px 128px;" th:src="@{/images/logo1.png}" />
       </a>
     </div>
     <!-- header -->
   </div>
 
-
-    <p><img th:src="@{images/${book.id}.png}" /></p>
-    <p>书名：<span th:text="${book.name}"></span></p>
+    <p><img th:src="${file}"/></p>
+    <p>书名：<span th:text="${book.bookName}"></span></p>
     <p>作者：<span th:text="${book.author}"></span></p>
     <p>出版社：<span th:text="${book.publisher}"></span></p>
-    <div class="bookComments" th:each="bookcomment: ${books.comments}">
-        <p><span th:text="${bookcomment.userName}"></span></p>
+    <p>书号：<span th:text="${book.bookId}"></span></p>
+    <div class="bookComments" th:each="bookcomment: ${bookComments}">
+        <p><span th:text="${bookcomment.user.name}"></span></p>
         <p><span th:text="${bookcomment.releaseDate}"></span></p>
-        <p><span th:text="${bookcomment.comment}</p>
-        <p><span th:text="${bookcomment.upvoke}"></span>
+        <p><span th:text="${bookcomment.content}"></span></p>
+        <p><span th:text="${bookcomment.upvote}"></span></p>
     </div>
     <div id="appendComment"></div>
     <div>
-        <textarea></textarea>
-        <button type="submit" id="comment">发表评论</button>
+        <textarea id="input-comment"></textarea>
+        <button type="submit" id="comment" th:onclick="'addComment(\''+${book.bookId}+'\');'">发表评论</button>
     </div>
 
   <div id="showBook"></div>
-  <script th:src="@{js/jquery.js}"></script>
-  <script th:src="@{js/bootstrap.min.js}"></script>
-  <script th:src="@{js/addbook.js}"></script>
-  <script th:src="@{js/searchbook.js}"></script>
-  <script th:src="@{js/showbook.js}"></script>
-  <script th:src="@{js/showtabs.js}"></script>
+  <script th:src="@{/js/jquery.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+
 </body>
 </html>
