@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-	
+
     @Autowired
     private UserRepository userRepository;
-    
-	@Autowired
-	HttpServletRequest httpServletRequest;
 
-	@RequestMapping("/home")
+    @Autowired
+    HttpServletRequest httpServletRequest;
+
+    @RequestMapping("/home")
     public String home(Model model) {
-    	String username = httpServletRequest.getRemoteUser();
+        String username = httpServletRequest.getRemoteUser();
         User user = userRepository.findByName(username);
         Set<Book> userReadingBooks = user.getReading_books();
         Set<Book> userPreferBooks = user.getPrefer_books();
@@ -33,13 +33,14 @@ public class HomeController {
         model.addAttribute("haveReadBooks", userHaveReadBooks);
         return "home";
     }
-	
-	/* @RequestMapping("/")
-	 public String login(Model model) {
-		 return "login";
-	 }*/
-	 @RequestMapping("/register")
-	 public String register(Model model) {
-		 return "register";
-	 }
+
+    /*
+     * @RequestMapping("/")
+     * 
+     * public String login(Model model) { return "login"; }
+     */
+    @RequestMapping("/register")
+    public String register(Model model) {
+        return "register";
+    }
 }

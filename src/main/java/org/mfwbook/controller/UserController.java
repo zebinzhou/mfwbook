@@ -25,13 +25,6 @@ public class UserController {
 	
 	@Autowired
 	HttpServletRequest httpServletRequest;
-	
-	@RequestMapping("/login")
-	public String login(){
-		return "login";
-	}
-	
-	
 //	@ResponseBody
     @RequestMapping("/home1")
     public String user(Model model) {
